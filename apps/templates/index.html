@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BpmCalc</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="static/main.css">
+    <link rel="stylesheet" href="static/animate.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </head>
+
+  <body>
+    <!--title-->
+    <div class="wrapper">
+      <div id="sitetitle">
+          <h1>BpmCalc</h1>
+      </div>
+
+      <!--contents-->
+      <div class="mdl-layout__container">
+        <form action="/resolve" method="post" class="form-inline">
+          <div id="radio">
+
+          <h2>Tempo Range</h2>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+              <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
+              <span class="mdl-radio__label" id="selectBPM">&plusmn;6</span>
+          </label>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+              <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
+              <span class="mdl-radio__label" id="selectBPM2">&plusmn;10</span>
+          </label>
+              <span class="mdl-tooltip" for="selectBPM">BPMレンジを選んで下さい。Please select the BPM range.</span>
+              <span class="mdl-tooltip" for="selectBPM2">BPMレンジを選んで下さい。Please select the BPM range.</span>
+          </div>
+
+            <div class="form mdl-textfield mdl-js-textfield" id="input_before" tabindex="-1">
+                  <input type="text" class="mdl-textfield__input form-control" id="from" name="from">
+                  <label for="name" class="mdl-textfield__label" id="label">From BPM:</label>
+                  <span class="mdl-tooltip" for="input_before" >変更元のBPMを入力して下さい。Please input the original BPM.</span>
+            </div>
+              <br>
+            <div class="form mdl-textfield mdl-js-textfield" id="input_after" tabindex="-1">
+                  <input type="text" class="mdl-textfield__input form-control" id="to" name="to" >
+                  <label for="name" class="mdl-textfield__label">To BPM:</label>
+                  <span class="mdl-tooltip" for="input_after">変更後のBPMを入力して下さい。Please input the target BPM.</span>
+            </div>
+              <br>
+            <div id="button">
+            <button type="submit" class="btn btn-default mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="showresult()">submit</button>
+            </div>
+          </form>
+      </div><!--div mdl～-->
+
+      <!--result-->
+      <div id="result">
+        <p class='animated fadeIn'>{{ source }}<br><font color="blue">{{ percentage }}</font><br>{{ notice }}<br><font color="red">{{ error }}</font></p>
+      </div>
+
+    </div><!--wrapper-->
+
+    <footer>
+      <p><img src="static/logo.png" alt="Logo" width="240" height="120"><h2>&copy; 2018 SLTS All Rights Reserved.</h2></p>
+    </footer>
+
+  </body>
+</html>
